@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="RFM">
+    <head>
+        <meta charset="utf-8">
+        <title>Responsive Footer Menu in AngularJS 1.6.5</title>
+        <style>
+            .inline-block-container{
+                display: block;
+            }
+            .inline-block-item{
+                display: inline-block;
+                width:25%;
+            }
+            @media (max-width:667px) {
+                .inline-block-item{
+                    display:block;
+                    width:100%;
+                }
+            }
+        </style>
+    </head>
+    <body ng-controller="RFMController">
+        <header>
+            <h1>Responsive Footer Menu in AngularJS 1.6.5</h1>
+        </header>
+        <main>
+            <section>
+                <ul>
+                    <li>In Desktop view, the menu items are displayed inline-block</li>
+                    <li>In Responsive, the menu items are displayed one below the other.</li>
+                    <li>For Responsive Layout, due to space constraints we can implement accordion pattern. </li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <div class="inline-block-container">
+                <div class="inline-block-item" ng-repeat="item in FooterMenu">
+                    <h4 ng-click="toggleMenu(item)">{{item.title}}</h4>
+                    <ul ng-if="item.showList">
+                        <li ng-repeat="menuItem in item.menu">
+                            <a href="#" id="{{menuItem.id}}">{{menuItem.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
